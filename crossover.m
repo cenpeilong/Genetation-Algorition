@@ -1,10 +1,11 @@
-%×Ó³ÌĞò£ºĞÂÖÖÈº½»²æ²Ù×÷,º¯ÊıÃû³Æ´æ´¢Îªcrossover.m
+%å­ç¨‹åºï¼šæ–°ç§ç¾¤äº¤å‰æ“ä½œ,å‡½æ•°åç§°å­˜å‚¨ä¸ºcrossover.m
 function [path_1_infor_1,path_1_infor_2]=crossover(father_1,father_2,transport_time,customer,number_of_car)
+    global path_1_infor_111111111 ;
     global path_1_infor_1 ;
     global  path_1_infor_2 ;
     path_1_infor = father_1.infor;
     path_2_infor = father_2.infor;
-    % Ëæ»úÑ¡È¡³µÁ¾£¬µÃµ½Â·¾¶L1ºÍL2
+    % éšæœºé€‰å–è½¦è¾†ï¼Œå¾—åˆ°è·¯å¾„L1å’ŒL2
     a = false;
     vehicle_1 = 0;
     vehicle_2 = 0;
@@ -25,27 +26,27 @@ function [path_1_infor_1,path_1_infor_2]=crossover(father_1,father_2,transport_t
         end
         a = aa && aaa;
     end 
-    % ½«¸¸´úÖĞÑ¡È¡µÄÂ·¾¶µÄ»ùÒòÉ¾³ıµô
-    %½«¸¸´úÒ»ÖĞµÄvehicle_1µÄ»ùÒòÌáÈ¡Îª
+    % å°†çˆ¶ä»£ä¸­é€‰å–çš„è·¯å¾„çš„åŸºå› åˆ é™¤æ‰
+    %å°†çˆ¶ä»£ä¸€ä¸­çš„vehicle_1çš„åŸºå› æå–ä¸º
     L1 = path_1_infor( :,path_1_infor(1,:) == vehicle_1);
     L1(:,1) = [];
-    %½«¸¸´ú2ÖĞµÄvehicle_2µÄ»ùÒòÌáÈ¡
+    %å°†çˆ¶ä»£2ä¸­çš„vehicle_2çš„åŸºå› æå–
     L2 = path_2_infor( :,path_2_infor(1,:) == vehicle_2);
     L2(:,1) = [];
-    %½«¸¸´úÒ»ÖĞµÄËù¶ÔÓ¦µÄL2µÄ»ùÒòÉ¾³ı
+    %å°†çˆ¶ä»£ä¸€ä¸­çš„æ‰€å¯¹åº”çš„L2çš„åŸºå› åˆ é™¤
     for i = 1:size(L2,2)
         value =  L2(3,i);
         path_1_infor(: , path_1_infor(3,:) == value) = [];
     end
-        %½«¸¸´ú¶şÖĞµÄËù¶ÔÓ¦µÄL1µÄ»ùÒòÉ¾³ı
+        %å°†çˆ¶ä»£äºŒä¸­çš„æ‰€å¯¹åº”çš„L1çš„åŸºå› åˆ é™¤
     for i = 1:size(L1,2)
             value =L1(3,i);
             path_2_infor(: , path_2_infor(3,:) == value) = [];
     end
 
     
-    % ½«Â·¾¶LÉÏµÄ»ùÒò°´ÕÕ³É±¾Ôö³¤×îĞ¡µÄÔ­ÔòÒÀ´Î²åÈëµ½¸¸´úÖĞ
-    %% ½«Â·¾¶L2ÉÏµÄ»ùÒò°´ÕÕ³É±¾Ôö³¤×îĞ¡µÄÔ­ÔòÒÀ´Î²åÈëµ½¸¸´ú1ÖĞ
+    % å°†è·¯å¾„Lä¸Šçš„åŸºå› æŒ‰ç…§æˆæœ¬å¢é•¿æœ€å°çš„åŸåˆ™ä¾æ¬¡æ’å…¥åˆ°çˆ¶ä»£ä¸­
+    %% å°†è·¯å¾„L2ä¸Šçš„åŸºå› æŒ‰ç…§æˆæœ¬å¢é•¿æœ€å°çš„åŸåˆ™ä¾æ¬¡æ’å…¥åˆ°çˆ¶ä»£1ä¸­
     
     nnew_path_1.infor = path_1_infor;
     nnew_path_1.cost = [];
@@ -80,7 +81,7 @@ function [path_1_infor_1,path_1_infor_2]=crossover(father_1,father_2,transport_t
         path_1_infor_1 = most_new_path(1).infor;
     end
 
-    %% ½«Â·¾¶L1ÉÏµÄ»ùÒò°´ÕÕ³É±¾Ôö³¤×îĞ¡µÄÔ­ÔòÒÀ´Î²åÈëµ½¸¸´ú2ÖĞn
+    %% å°†è·¯å¾„L1ä¸Šçš„åŸºå› æŒ‰ç…§æˆæœ¬å¢é•¿æœ€å°çš„åŸåˆ™ä¾æ¬¡æ’å…¥åˆ°çˆ¶ä»£2ä¸­n
     
     nnew_path_2.infor = path_2_infor;
     nnew_path_2.cost = [];
